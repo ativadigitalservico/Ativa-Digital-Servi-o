@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratar Serviços | Ativa Digital Serviços</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">AD <span class="full-name">Ativa Digital Serviços</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Início</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="precos.html">Preços</a></li>
+                    <li><a href="contratar.html">Contratar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="contratar-servicos" class="contratar-section">
+        <div class="container">
+            <div class="main-content">
+                <p class="introducao-texto">Venha Saber mais sobre nosso site e nossos serviços.</p>
+                <p class="ou-texto">Ou Preencha Nosso Formulário de Contratação</p>
+
+                <form id="contratarForm" class="contratar-form">
+                    <div class="form-group">
+                        <label for="nome">Seu Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="servico">Serviço de Interesse:</label>
+                        <select id="servico" name="servico" required>
+                            <option value="">Selecione um serviço</option>
+                            <option value="Plano Essencial">Plano Essencial</option>
+                            <option value="Plano Profissional">Plano Profissional</option>
+                            <option value="Plano Premium">Plano Premium</option>
+                            <option value="Currículos Profissionais">Currículos Profissionais</option>
+                            <option value="Criação e Correção de Documentos">Criação e Correção de Documentos</option>
+                            <option value="Design Gráfico para Mídias Sociais">Design Gráfico para Mídias Sociais</option>
+                            <option value="Digitalização e Organização de Arquivos">Digitalização e Organização de Arquivos</option>
+                            <option value="Criação de Apresentações Profissionais">Criação de Apresentações Profissionais</option>
+                            <option value="Gestão de Redes Sociais (Básica)">Gestão de Redes Sociais (Básica)</option>
+                            <option value="Elaboração de Infoprodutos">Elaboração de Infoprodutos</option>
+                            <option value="Conversão e Otimização de Arquivos">Conversão e Otimização de Arquivos</option>
+                            <option value="Consultoria Digital Rápida">Consultoria Digital Rápida</option>
+                            <option value="Copywriter">Copywriter</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Redator">Redator</option>
+                            <option value="Assistente Virtual">Assistente Virtual</option>
+                            <option value="Gerente de Operações">Gerente de Operações</option>
+                            <option value="Vendedor">Vendedor</option>
+                            <option value="Desenvolvedor">Desenvolvedor</option>
+                            <option value="Suporte">Suporte</option>
+                            <option value="Analista de Dados">Analista de Dados</option>
+                            <option value="Outro / Vários Serviços">Outro / Vários Serviços</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="detalhes">Detalhes da Sua Necessidade:</label>
+                        <textarea id="detalhes" name="detalhes" rows="7" placeholder="Descreva o que você precisa, o máximo de detalhes possível." required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Solicitar Contratação</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ativa Digital Serviços. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preenche o campo de serviço se houver um parâmetro 'plano' ou 'servico' na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const planoSelecionado = urlParams.get('plano');
+            const servicoAvulso = urlParams.get('servico');
+            const selectServico = document.getElementById('servico');
+
+            if (planoSelecionado) {
+                // Capitaliza a primeira letra de cada palavra
+                const planoFormatado = planoSelecionado.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                selectServico.value = `Plano ${planoFormatado}`;
+            } else if (servicoAvulso) {
+                const servicoFormatado = servicoAvulso.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                selectServico.value = servicoFormatado === 'Curriculo' ? 'Currículos Profissionais' : servicoFormatado;
+            }
+
+            document.getElementById('contratarForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Impede o envio padrão do formulário
+
+                const nome = document.getElementById('nome').value;
+                const servico = document.getElementById('servico').value;
+                const detalhes = document.getElementById('detalhes').value;
+
+                // Constrói a mensagem para o WhatsApp
+                let message = `Olá! Tenho interesse em um serviço da Ativa Digital Serviços.\n\n`;
+                message += `*Nome Completo:* ${nome}\n`;
+                message += `*Serviço de Interesse:* ${servico}\n`;
+                message += `*Detalhes da Necessidade:*\n${detalhes}`;
+
+                // Codifica a mensagem para ser usada na URL
+                const encodedMessage = encodeURIComponent(message);
+
+                // Monta a URL do WhatsApp para o número de Uberlândia (DDD 34)
+                const whatsappURL = `https://wa.me/5534991829416?text=${encodedMessage}`;
+
+                // Abre a URL no WhatsApp
+                window.open(whatsappURL, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
