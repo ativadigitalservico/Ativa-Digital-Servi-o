@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- Lógica da Modal de Serviços (para index.html) ---
+    // Este objeto `servicosInfo` deve ser expandido ou ajustado conforme os serviços disponíveis em seu site.
+    // As chaves (ex: 'modal-documentos') devem corresponder aos atributos `data-modal` dos elementos HTML.
     const servicosInfo = {
         'modal-documentos': {
             title: 'Criação e Correção de Documentos',
@@ -111,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Desenvolvedor',
             desc: 'Criação de soluções de software e websites, para o crescimento e a inovação de sua empresa.'
         }
+        // Adicione mais serviços aqui conforme necessário
     };
     
     const servicoItems = document.querySelectorAll('.servico-item');
@@ -119,9 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDesc = document.getElementById('modal-desc');
     const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
     const closeBtn = document.querySelector('.close-btn');
-    const whatsappNumber = '5534991829416';
+    const whatsappNumber = '5534991829416'; // Número de WhatsApp da Ativa Digital
 
-    if (servicoItems.length > 0) {
+    if (servicoItems.length > 0 && modal && modalTitle && modalDesc && modalWhatsappBtn && closeBtn) {
         servicoItems.forEach(item => {
             item.addEventListener('click', function(event) {
                 event.preventDefault();
@@ -130,15 +133,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (info) {
                     modalTitle.textContent = info.title;
                     modalDesc.textContent = info.desc;
-                    modalWhatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Olá, gostaria de saber mais sobre ' + info.title + '.')}`;
+                    modalWhatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Olá, gostaria de saber mais sobre o serviço: ' + info.title + '.')}`;
                     modal.style.display = 'flex';
                 }
             });
         });
 
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => modal.style.display = 'none');
-        }
+        closeBtn.addEventListener('click', () => modal.style.display = 'none');
 
         window.addEventListener('click', (event) => {
             if (event.target === modal) {
@@ -183,11 +184,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (enviarWhatsappBtn && contratarForm) {
         enviarWhatsappBtn.addEventListener('click', function() {
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const telefone = document.getElementById('telefone').value;
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefone = document.getElementById('telefone').value.trim();
             const servico = document.getElementById('servico').value;
-            const detalhes = document.getElementById('detalhes').value;
+            const detalhes = document.getElementById('detalhes').value.trim();
 
             // Validação simples
             if (!nome || !email || !servico || !detalhes) {
@@ -195,13 +196,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
+            // Validação de e-mail básica
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, insira um endereço de e-mail válido.');
+                return;
+            }
+
             // Constrói a mensagem para o WhatsApp
-            let message = `Olá! Meu nome é ${nome}`;
-            if (email) message += `, meu e-mail é ${email}`;
-            if (telefone) message += ` e meu telefone é ${telefone}`;
-            message += `.\n\nGostaria de solicitar um orçamento para o serviço de *${servico}*.`;
-            message += `\n\nDetalhes da minha necessidade: ${detalhes}`;
-            message += `\n\nPor favor, entre em contato para mais informações.`;
+            let message = `Olá! Meu nome é *${nome}*.`;
+            if (email) message += ` Meu e-mail é ${email}.`;
+            if (telefone) message += ` Meu telefone é ${telefone}.`;
+            message += `\n\nGostaria de solicitar um orçamento para o serviço de *${servico}*.`;
+            message += `\n\nDetalhes da minha necessidade:\n${detalhes}`;
+            message += `\n\nAguardando contato!`;
 
             // Codifica a mensagem para uso na URL
             const encodedMessage = encodeURIComponent(message);
@@ -212,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Abre o link em uma nova aba
             window.open(whatsappLink, '_blank');
 
-            // Opcional: Limpar o formulário após o envio
+            // Limpa o formulário após o envio
             contratarForm.reset();
         });
     }
@@ -241,25 +249,30 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
+            // Verifica se o elemento de destino existe
             const targetElement = document.querySelector(targetId);
-            const headerOffset = document.querySelector('header').offsetHeight;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            if (targetElement) {
+                const headerOffset = document.querySelector('header')?.offsetHeight || 0; // Usa ?. para segurança caso o header não exista
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
         });
     });
 
     // Mudança de estilo do header ao rolar a página
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        if (header) { // Verifica se o header existe
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }
     });
 
