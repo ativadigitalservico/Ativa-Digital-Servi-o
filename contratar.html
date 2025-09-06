@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratar | Ativa Digital Serviços</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos adicionais para a página Contratar (se houver, adicione aqui ou no styles.css) */
+        .contratar-section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: var(--background-color, #f8f8f8);
+            color: var(--text-color, #333);
+        }
+
+        .contratar-section h3 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--heading-color, #333);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        .contratar-section p.introducao-texto {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: var(--secondary-text-color, #666);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .contratar-section p.ou-texto {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: var(--text-color, #333);
+        }
+
+        .contratar-form {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--card-background-color, #ffffff);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--heading-color, #333);
+            font-size: 1.1em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 12px 10px;
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: 5px;
+            font-size: 1em;
+            color: var(--text-color, #333);
+            background-color: var(--input-background-color, #f0f0f0);
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color, #7f00ff);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(127, 0, 255, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn.large-btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+
+        .btn.primary-btn {
+            background-color: var(--primary-color, #7f00ff);
+            color: #fff;
+        }
+
+        .btn.primary-btn:hover {
+            background-color: var(--primary-color-darker, #6a00cc);
+        }
+
+        /* Variáveis para Modo Escuro (estas devem idealmente estar no seu styles.css principal) */
+        body.dark-mode {
+            --background-color: #2f3640;
+            --text-color: #ecf0f1;
+            --secondary-text-color: #bdc3c7;
+            --heading-color: #f1f2f6;
+            --card-background-color: #3f4a59;
+            --input-background-color: #4a5461;
+            --border-color: #5d6776;
+            --primary-color: #9b59b6; /* Tom roxo/magenta mais claro para contraste */
+            --primary-color-darker: #8e44ad;
+            --secondary-color: #3498db;
+            --secondary-color-darker: #2980b9;
+        }
+
+        /* Animações (mantidas do seu código anterior) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 768px) {
+            .contratar-section h3 {
+                font-size: 2em;
+            }
+            .contratar-section p.introducao-texto {
+                font-size: 1em;
+            }
+            .contratar-form {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            .btn.large-btn {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <img src="logo_ativa_digital.png" alt="Ativa Digital Serviços" class="logo-img">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Início</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="precos.html">Preços</a></li>
+                    <li><a href="contratar.html">Contratar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contratar-section">
+            <div class="container">
+                <h3 class="animate-on-scroll">Vamos Começar Seu Projeto?</h3>
+                <p class="introducao-texto animate-on-scroll">Preencha o formulário abaixo para nos contar sobre suas necessidades. <br>Entraremos em contato o mais breve possível!</p>
+                <p class="ou-texto">Ou Fale Conosco Diretamente</p>
+                <a href="https://wa.me/5534991829416" class="btn primary-btn large-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Falar Pelo WhatsApp
+                </a>
+
+                <div class="main-content">
+                    <h3 class="animate-on-scroll">Formulário de Contratação</h3>
+                    <form class="contratar-form" id="contratarForm">
+                        <div class="form-group">
+                            <label for="nome">Seu Nome Completo:</label>
+                            <input type="text" id="nome" name="nome" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Seu Melhor E-mail:</label>
+                            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone (Opcional):</label>
+                            <input type="text" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="servico">Serviço de Interesse:</label>
+                            <select id="servico" name="servico" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="Criação e Correção de Documentos">Criação e Correção de Documentos</option>
+                                <option value="Currículos Profissionais">Currículos Profissionais</option>
+                                <option value="Design Gráfico para Mídias Sociais">Design Gráfico para Mídias Sociais</option>
+                                <option value="Digitalização e Organização de Arquivos">Digitalização e Organização de Arquivos</option>
+                                <option value="Criação de Apresentações Profissionais">Criação de Apresentações Profissionais</option>
+                                <option value="Gestão de Redes Sociais (Básica)">Gestão de Redes Sociais (Básica)</option>
+                                <option value="Elaboração de Infoprodutos">Elaboração de Infoprodutos</option>
+                                <option value="Conversão e Otimização de Arquivos">Conversão e Otimização de Arquivos</option>
+                                <option value="Consultoria Digital Rápida">Consultoria Digital Rápida</option>
+                                <option value="Copywriter">Copywriter</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Redator">Redator</option>
+                                <option value="Assistente Virtual">Assistente Virtual</option>
+                                <option value="Gerente de Operações">Gerente de Operações</option>
+                                <option value="Vendedor">Vendedor</option>
+                                <option value="Suporte">Suporte</option>
+                                <option value="Analista de Dados">Analista de Dados</option>
+                                <option value="Desenvolvedor">Desenvolvedor</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="detalhes">Detalhes da Sua Necessidade:</label>
+                            <textarea id="detalhes" name="detalhes" rows="6" placeholder="Descreva o que você precisa, o máximo de detalhes possível." required></textarea>
+                        </div>
+                        <button type="button" class="btn primary-btn large-btn" id="enviarWhatsapp">Enviar Solicitação via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ativa Digital Serviços. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="mode-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <script src="script.js"></script>
+</body>
+</html>
