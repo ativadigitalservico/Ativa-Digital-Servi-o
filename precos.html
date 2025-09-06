@@ -9,19 +9,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Variáveis de Cores - Padrão Claro */
+        :root {
+            --background-color: #f8f8f8;
+            --text-color: #333;
+            --secondary-text-color: #666;
+            --heading-color: #333;
+            --card-background-color: #ffffff;
+            --primary-color: #7f00ff; /* Roxo vibrante */
+            --primary-color-darker: #6a00cc;
+            --secondary-color: #00c8ff; /* Azul claro */
+            --secondary-color-darker: #00a0cc;
+        }
+
+        /* Variáveis para Modo Escuro */
+        body.dark-mode {
+            --background-color: #2f3640;
+            --text-color: #ecf0f1;
+            --secondary-text-color: #bdc3c7;
+            --heading-color: #f1f2f6;
+            --card-background-color: #3f4a59;
+            --primary-color: #9b59b6; /* Tom roxo/magenta mais claro para contraste */
+            --primary-color-darker: #8e44ad;
+            --secondary-color: #3498db;
+            --secondary-color-darker: #2980b9;
+        }
+
         /* CSS para a seção de preços */
         .precos-section {
             padding: 60px 0;
             text-align: center;
-            background-color: var(--background-color, #f8f8f8); /* Cor de fundo da seção */
-            color: var(--text-color, #333);
+            background-color: var(--background-color); /* Cor de fundo da seção */
+            color: var(--text-color);
         }
 
         .precos-section h2,
         .precos-section h3 { /* Aplicar a títulos de seções internas também */
             font-size: 2.8em;
             margin-bottom: 20px;
-            color: var(--heading-color, #333);
+            color: var(--heading-color);
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
         }
@@ -35,7 +61,7 @@
         .precos-section .subtitle {
             font-size: 1.2em;
             margin-bottom: 60px;
-            color: var(--secondary-text-color, #666);
+            color: var(--secondary-text-color);
             font-family: 'Inter', sans-serif;
         }
 
@@ -50,7 +76,7 @@
         }
 
         .plano-item {
-            background-color: var(--card-background-color, #ffffff);
+            background-color: var(--card-background-color);
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             padding: 40px 30px;
@@ -68,7 +94,7 @@
         }
 
         .plano-item.destaque {
-            border: 2px solid var(--primary-color, #7f00ff); /* Borda de destaque */
+            border: 2px solid var(--primary-color); /* Borda de destaque */
         }
 
         .plano-item .destaque-label {
@@ -76,7 +102,7 @@
             top: 0;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: var(--primary-color, #7f00ff);
+            background-color: var(--primary-color);
             color: #fff;
             padding: 5px 15px;
             border-radius: 20px;
@@ -88,21 +114,21 @@
         .plano-item h3 {
             font-size: 2em;
             margin-bottom: 15px;
-            color: var(--heading-color, #333);
+            color: var(--heading-color);
             font-weight: 600;
         }
 
         .plano-item .preco-valor {
             font-size: 2.5em;
             font-weight: bold;
-            color: var(--primary-color, #7f00ff);
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
 
         .plano-item .preco-valor span {
             font-size: 0.5em;
             font-weight: normal;
-            color: var(--secondary-text-color, #666);
+            color: var(--secondary-text-color);
         }
 
         .plano-item ul {
@@ -115,22 +141,22 @@
 
         .plano-item ul li {
             font-size: 1.1em;
-            margin-bottom: 10px;
-            color: var(--text-color, #333);
+            margin-bottom: 12px; /* Aumentado o espaçamento */
+            color: var(--text-color);
             display: flex; /* Para alinhar o ícone com o texto */
             align-items: center;
         }
 
         .plano-item ul li i {
             margin-right: 10px;
-            color: var(--primary-color, #7f00ff); /* Cor do ícone */
+            color: var(--primary-color); /* Cor do ícone */
         }
 
         /* Estilos para a grade de Serviços Avulsos */
         .servicos-avulsos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajusta o número de colunas */
-            gap: 20px; /* Espaço entre os cards */
+            gap: 25px; /* Espaço entre os cards */
             max-width: 1200px;
             margin: 0 auto; /* Centraliza a grade */
             padding: 20px 0;
@@ -138,7 +164,7 @@
         }
 
         .servico-avulso-item {
-            background-color: var(--card-background-color, #ffffff); /* Usa cor de fundo do card, padrão branco */
+            background-color: var(--card-background-color); /* Usa cor de fundo do card, padrão branco */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 25px;
@@ -149,7 +175,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between; /* Espaça o conteúdo dentro do card */
-            height: 180px; /* Altura fixa para alinhar os botões */
+            /* Removido: height: 180px; */ /* Altura fixa removida */
         }
 
         .servico-avulso-item:hover {
@@ -160,14 +186,14 @@
         .servico-avulso-item h3 {
             font-size: 1.3em;
             margin-bottom: 10px;
-            color: var(--heading-color, #333);
+            color: var(--heading-color);
             line-height: 1.3;
         }
 
         .servico-avulso-item .preco-valor {
             font-size: 1.8em;
             font-weight: bold;
-            color: var(--primary-color, #7f00ff); /* Cor principal do tema */
+            color: var(--primary-color); /* Cor principal do tema */
             margin-bottom: 15px;
         }
         
@@ -176,7 +202,7 @@
             display: inline-block;
             padding: 12px 30px;
             border-radius: 25px;
-            background-color: var(--primary-color, #7f00ff);
+            background-color: var(--primary-color);
             color: #fff;
             text-decoration: none;
             font-weight: bold;
@@ -187,7 +213,7 @@
         }
 
         .btn:hover {
-            background-color: var(--primary-color-darker, #6a00cc);
+            background-color: var(--primary-color-darker);
             transform: translateY(-2px);
         }
         
@@ -196,7 +222,7 @@
             text-align: center;
             margin-top: 80px;
             padding: 40px 20px;
-            background-color: var(--card-background-color, #ffffff);
+            background-color: var(--card-background-color);
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
             max-width: 800px;
@@ -205,39 +231,26 @@
         }
         .personalizado h3 {
             margin-bottom: 15px;
-            color: var(--heading-color, #333);
+            color: var(--heading-color);
             font-size: 1.8em;
         }
         .personalizado p {
             margin-bottom: 30px;
-            color: var(--secondary-text-color, #666);
+            color: var(--secondary-text-color);
             font-size: 1.1em;
         }
         .personalizado .btn.secondary-btn {
-             background-color: var(--secondary-color, #00c8ff);
-             color: #fff;
-             border: none;
-             padding: 12px 30px;
-             border-radius: 25px;
-             font-weight: bold;
-             transition: background-color 0.3s ease, transform 0.2s ease;
+            background-color: var(--secondary-color);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .personalizado .btn.secondary-btn:hover {
-             background-color: var(--secondary-color-darker, #00a0cc);
-             transform: translateY(-2px);
-        }
-
-        /* Variáveis para Modo Escuro (estas devem idealmente estar no seu styles.css principal) */
-        body.dark-mode {
-            --background-color: #2f3640;
-            --text-color: #ecf0f1;
-            --secondary-text-color: #bdc3c7;
-            --heading-color: #f1f2f6;
-            --card-background-color: #3f4a59;
-            --primary-color: #9b59b6; /* Tom roxo/magenta mais claro para contraste */
-            --primary-color-darker: #8e44ad;
-            --secondary-color: #3498db;
-            --secondary-color-darker: #2980b9;
+            background-color: var(--secondary-color-darker);
+            transform: translateY(-2px);
         }
 
         /* Animações (mantidas do seu código anterior) */
@@ -274,6 +287,7 @@
             }
             .servicos-avulsos-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajusta para telas muito pequenas */
+                gap: 15px; /* Reduz o gap em telas menores */
             }
         }
     </style>
@@ -315,7 +329,7 @@
                             <li><i class="fas fa-check-circle"></i> Consultoria Rápida (1 por mês)</li>
                             <li><i class="fas fa-check-circle"></i> Gestão de Redes Sociais (Básica)</li>
                         </ul>
-                        <a href="contratar.html?plano=essencial" class="btn primary-btn">Contratar Plano</a>
+                        <a href="contratar.html?plano=essencial" class="btn primary-btn" title="Contratar o Plano Essencial">Contratar Plano</a>
                     </div>
 
                     <div class="plano-item destaque animate-on-scroll">
@@ -329,7 +343,7 @@
                             <li><i class="fas fa-check-circle"></i> Consultoria Rápida (2 por mês)</li>
                             <li><i class="fas fa-check-circle"></i> Gestão de Redes Sociais (Completa)</li>
                         </ul>
-                        <a href="contratar.html?plano=profissional" class="btn primary-btn">Contratar Plano</a>
+                        <a href="contratar.html?plano=profissional" class="btn primary-btn" title="Contratar o Plano Profissional">Contratar Plano</a>
                     </div>
                     
                     <div class="plano-item animate-on-scroll">
@@ -342,7 +356,7 @@
                             <li><i class="fas fa-check-circle"></i> Suporte Prioritário (24/7)</li>
                             <li><i class="fas fa-check-circle"></i> Relatórios de Performance (Detalhado)</li>
                         </ul>
-                        <a href="contratar.html?plano=premium" class="btn primary-btn">Contratar Plano</a>
+                        <a href="contratar.html?plano=premium" class="btn primary-btn" title="Contratar o Plano Premium">Contratar Plano</a>
                     </div>
                 </div>
 
@@ -353,110 +367,110 @@
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Criação e Correção de Documentos</h3>
                         <p class="preco-valor">R$ 35,99</p>
-                        <a href="contratar.html?servico=documentos" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=documentos" class="btn primary-btn" title="Contratar o serviço de Criação e Correção de Documentos">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Currículos Profissionais</h3>
                         <p class="preco-valor">R$ 15,00</p>
-                        <a href="contratar.html?servico=curriculos" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=curriculos" class="btn primary-btn" title="Contratar o serviço de Currículos Profissionais">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Design Gráfico para Mídias Sociais</h3>
                         <p class="preco-valor">R$ 45,00</p>
-                        <a href="contratar.html?servico=design" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=design" class="btn primary-btn" title="Contratar o serviço de Design Gráfico para Mídias Sociais">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Digitalização e Organização de Arquivos</h3>
                         <p class="preco-valor">R$ 10,00</p>
-                        <a href="contratar.html?servico=digitalizacao" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=digitalizacao" class="btn primary-btn" title="Contratar o serviço de Digitalização e Organização de Arquivos">Contratar</a>
                     </div>
                     
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Criação de Apresentações Profissionais</h3>
                         <p class="preco-valor">R$ 30,00</p>
-                        <a href="contratar.html?servico=apresentacoes" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=apresentacoes" class="btn primary-btn" title="Contratar o serviço de Criação de Apresentações Profissionais">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Gestão de Redes Sociais (Básica)</h3>
                         <p class="preco-valor">R$ 12,90</p>
-                        <a href="contratar.html?servico=gestao-redes" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=gestao-redes" class="btn primary-btn" title="Contratar o serviço de Gestão de Redes Sociais (Básica)">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Elaboração de Infoprodutos</h3>
                         <p class="preco-valor">R$ 19,99</p>
-                        <a href="contratar.html?servico=infoprodutos" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=infoprodutos" class="btn primary-btn" title="Contratar o serviço de Elaboração de Infoprodutos">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Conversão e Otimização de Arquivos</h3>
                         <p class="preco-valor">R$ 10,99</p>
-                        <a href="contratar.html?servico=conversao" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=conversao" class="btn primary-btn" title="Contratar o serviço de Conversão e Otimização de Arquivos">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Consultoria Digital Rápida</h3>
                         <p class="preco-valor">R$ 25,00</p>
-                        <a href="contratar.html?servico=consultoria" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=consultoria" class="btn primary-btn" title="Contratar o serviço de Consultoria Digital Rápida">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Copywriter</h3>
                         <p class="preco-valor">R$ 39,90</p>
-                        <a href="contratar.html?servico=copywriter" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=copywriter" class="btn primary-btn" title="Contratar o serviço de Copywriter">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Social Media</h3>
                         <p class="preco-valor">R$ 65,00</p>
-                        <a href="contratar.html?servico=social-media" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=social-media" class="btn primary-btn" title="Contratar o serviço de Social Media">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Redator</h3>
                         <p class="preco-valor">R$ 30,00</p>
-                        <a href="contratar.html?servico=redator" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=redator" class="btn primary-btn" title="Contratar o serviço de Redator">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Assistente Virtual</h3>
                         <p class="preco-valor">R$ 34,99</p>
-                        <a href="contratar.html?servico=assistente" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=assistente" class="btn primary-btn" title="Contratar o serviço de Assistente Virtual">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Gerente de Operações</h3>
                         <p class="preco-valor">R$ 33,90</p>
-                        <a href="contratar.html?servico=gerente" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=gerente" class="btn primary-btn" title="Contratar o serviço de Gerente de Operações">Contratar</a>
                     </div>
                     
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Vendedor</h3>
                         <p class="preco-valor">R$ 5,00</p>
-                        <a href="contratar.html?servico=vendedor" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=vendedor" class="btn primary-btn" title="Contratar o serviço de Vendedor">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Suporte</h3>
                         <p class="preco-valor">R$ 4,99</p>
-                        <a href="contratar.html?servico=suporte" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=suporte" class="btn primary-btn" title="Contratar o serviço de Suporte">Contratar</a>
                     </div>
 
                     <div class="servico-avulso-item animate-on-scroll">
                         <h3>Analista de Dados</h3>
                         <p class="preco-valor">R$ 4,99</p>
-                        <a href="contratar.html?servico=analista" class="btn primary-btn">Contratar</a>
+                        <a href="contratar.html?servico=analista" class="btn primary-btn" title="Contratar o serviço de Analista de Dados">Contratar</a>
                     </div>
                 </div>
 
                 <div class="personalizado animate-on-scroll">
                     <h3>Não encontrou o que precisa ou quer algo mais específico?</h3>
                     <p>Entre em contato conosco para um orçamento personalizado e criaremos a solução perfeita para você.</p>
-                    <a href="contratar.html" class="btn secondary-btn">Solicite um Orçamento Personalizado</a>
+                    <a href="contratar.html" class="btn secondary-btn" title="Solicite um Orçamento Personalizado">Solicite um Orçamento Personalizado</a>
                 </div>
             </div>
         </section>
@@ -466,8 +480,8 @@
         <div class="container">
             <p>&copy; 2025 Ativa Digital Serviços. Todos os direitos reservados.</p>
             <div class="footer-links">
-                <a href="#">Termos de Uso</a>
-                <a href="#">Política de Privacidade</a>
+                <a href="/termos-de-uso.html">Termos de Uso</a>
+                <a href="/politica-de-privacidade.html">Política de Privacidade</a>
             </div>
         </div>
     </footer>
